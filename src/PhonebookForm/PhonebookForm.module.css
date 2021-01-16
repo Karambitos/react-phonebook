@@ -1,0 +1,26 @@
+.form{
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+}
+.formLabel,
+.formInput {
+    margin-bottom: 10px;
+        font-size: 20px;
+        text-align: left;
+
+}
+
+.formInput{
+    padding: 5px 10px;
+}
+
+.formLabel {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.formBtn{
+    margin-top: 20px;
+}

@@ -1,0 +1,18 @@
+.contactList {
+    max-width: 800px;
+    margin: auto;
+    list-style: disc;
+}
+
+.contactItem{
+   display: flex;
+}
+
+.contactItem p:first-child{
+    margin-right: 20px;
+}
+
+.contactItem p{
+    width: 49%;
+    text-align: left;
+}
