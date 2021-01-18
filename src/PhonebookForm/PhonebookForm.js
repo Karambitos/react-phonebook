@@ -9,7 +9,6 @@ export default class PhonebookForm extends Component {
     state = {
         nameValue: '',
         numberValue: '',
-        // disabled: true,
     };
 
     nameInputId = shortid.generate();
@@ -18,15 +17,18 @@ export default class PhonebookForm extends Component {
     handleInputChange = event => {
         const { name, value } = event.currentTarget;
         this.setState({ [name]: value });
-        console.log(!(this.state.nameValue || this.state.numberValue));
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.onSubmit(this.state);
-        // this.setState({ nameValue: '', numberValue: '', })
-        // console.log(this.reset());
-        // this.reset();
+        const includeName = this.props.contacts.some(contact => contact.name === this.state.nameValue);
+
+        if (includeName) {
+            alert(this.state.nameValue + ' is already in contacts')
+        } else {
+            this.props.onSubmit(this.state);
+            this.setState({ nameValue: '', numberValue: '', })
+        }
     };
 
     reset = () => {
@@ -34,18 +36,19 @@ export default class PhonebookForm extends Component {
     };
 
     render() {
+        const { nameValue, numberValue } = this.state;
         return (
             <SectionTitle title='Phonebook'>
                 <form onSubmit={this.handleSubmit} className={styles.form}>
                     <label className={styles.formLabel} htmlFor={this.nameInputId}>Name</label>
                     <input className={styles.formInput} type="text" name="nameValue"
                         id={this.nameInputId}
-                        value={this.nameValue}
+                        value={nameValue}
                         onChange={this.handleInputChange} />
                     <label className={styles.formLabel} htmlFor={this.numberInputId}>Number</label>
                     <input className={styles.formInput} type="tel" name="numberValue"
                         id={this.numberInputId}
-                        value={this.numberValue}
+                        value={numberValue}
                         onChange={this.handleInputChange} />
                     <button className={styles.formBtn} type="submit" disabled={
                         (!(this.state.nameValue && this.state.numberValue))

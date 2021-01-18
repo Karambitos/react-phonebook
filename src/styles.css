@@ -35,7 +35,8 @@ button {
   text-transform: capitalize;
   letter-spacing: 1.2px;
   border-radius: 5px;
-  margin: 20px;
+  height: fit-content;
+  margin: auto;
 }
 
 button:hover {

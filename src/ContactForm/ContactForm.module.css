@@ -6,6 +6,7 @@
 
 .contactItem{
    display: flex;
+       align-items: center;
 }
 
 .contactItem p:first-child{
